@@ -7,17 +7,33 @@ b = gets.strip.to_f
 print "Введите сторону (c): "
 c = gets.strip.to_f
 
-x = a == b || a == c || c == b      # равнобедренный
-y = a**2 + b**2 == c**2             # прямоугольный
-z = a == b && b == c && c == a      # равнобедренный и равносторонний
+# поиск гипотенузы
 
-if y
+if a > b && a > c
+  hypotenuse = a
+  cathetus1 = b
+  cathetus2 = c
+elsif b > a && b > c
+  hypotenuse = b
+  cathetus1 = a
+  cathetus2 = c
+else
+  hypotenuse = c
+  cathetus1 = a
+  cathetus2 = b
+end
+
+rectangular = cathetus1**2 + cathetus2**2 == hypotenuse**2      # прямоугольный
+isosceles = a == b || a == c || c == b                          # равнобедренный
+equilateral = a == b && b == c && c == a                        # равнобедренный и равносторонний
+
+puts "Гипотенуза равна: #{hypotenuse}"
+
+if rectangular
   puts "Треугольник прямоугольный"
-elsif
-  z
+elsif equilateral
   puts "Треугольник равнобедренный и равносторонний"
-elsif
-  x
+elsif isosceles
   puts "Треугольник равнобедренный"
 else
   puts "Обычный треугольник"
