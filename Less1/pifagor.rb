@@ -34,9 +34,7 @@ if equilateral
   abort
 end
 
-if isosceles
-  puts 'Треугольник равнобедренный'
-end
+puts 'Треугольник равнобедренный' if isosceles
 
 if rectangular
   puts 'Треугольник прямоугольный'
