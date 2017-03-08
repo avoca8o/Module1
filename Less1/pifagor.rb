@@ -29,12 +29,17 @@ equilateral = a == b && b == c && c == a                              # равн
 
 puts "Гипотенуза равна: #{hypotenuse}"
 
+if equilateral
+  puts 'Треугольник равнобедренный и равносторонний'
+  abort
+end
+
+if isosceles
+  puts 'Треугольник равнобедренный'
+end
+
 if rectangular
   puts 'Треугольник прямоугольный'
-elsif equilateral
-  puts 'Треугольник равнобедренный и равносторонний'
-elsif isosceles
-  puts 'Треугольник равнобедренный'
 else
-  puts 'Обычный треугольник'
+  puts 'Треугольник не прямоугольный'
 end
