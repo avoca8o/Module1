@@ -1,10 +1,10 @@
-print "Введите сторону (a): "
+print 'Введите сторону (a): '
 a = gets.strip.to_f
 
-print "Введите сторону (b): "
+print 'Введите сторону (b): '
 b = gets.strip.to_f
 
-print "Введите сторону (c): "
+print 'Введите сторону (c): '
 c = gets.strip.to_f
 
 # поиск гипотенузы
@@ -23,18 +23,18 @@ else
   cathetus2 = b
 end
 
-rectangular = cathetus1**2 + cathetus2**2 == hypotenuse**2      # прямоугольный
-isosceles = a == b || a == c || c == b                          # равнобедренный
-equilateral = a == b && b == c && c == a                        # равнобедренный и равносторонний
+rectangular = cathetus1**2 + cathetus2**2 == hypotenuse**2            # прямоугольный
+isosceles = a == b || a == c || c == b                                # равнобедренный
+equilateral = a == b && b == c && c == a                              # равнобедренный и равносторонний
 
 puts "Гипотенуза равна: #{hypotenuse}"
 
 if rectangular
-  puts "Треугольник прямоугольный"
+  puts 'Треугольник прямоугольный'
 elsif equilateral
-  puts "Треугольник равнобедренный и равносторонний"
+  puts 'Треугольник равнобедренный и равносторонний'
 elsif isosceles
-  puts "Треугольник равнобедренный"
+  puts 'Треугольник равнобедренный'
 else
-  puts "Обычный треугольник"
+  puts 'Обычный треугольник'
 end

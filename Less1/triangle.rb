@@ -1,7 +1,7 @@
-print "Основание(см): "
+print 'Основание(см): '
 a = gets.strip.to_f
 
-print "Высота (см): "
+print 'Высота (см): '
 h = gets.strip.to_f
 
 s = (a * h) / 2
