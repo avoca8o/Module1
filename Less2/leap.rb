@@ -11,8 +11,6 @@ end
 if (year % 400).zero? && (year % 4).zero?
   puts 'Високосный год!'
   months[1] = 29
-elsif (year % 100).zero?
-  puts 'Не високосный год!'
 else
   puts 'Не високосный год!'
 end
