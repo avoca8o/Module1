@@ -8,9 +8,9 @@ if year <= 0
   exit
 end
 
-if (year % 400).zero? && (year % 4).zero?
-  puts 'Високосный год!'
+if (year % 400 == 0 && year % 100 == 0) || (year % 4 == 0 && year % 100 != 0)
   months[1] = 29
+  puts 'Високосный год!'
 else
   puts 'Не високосный год!'
 end
