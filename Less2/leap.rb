@@ -27,7 +27,7 @@ print 'Day: '
 day = gets.chomp.to_i
 
   unless day.between?(1, months[month - 1])
-    puts 'Такого дня нет'
+    puts 'Такого дня в этом месяце нет'
     exit
   end
 
