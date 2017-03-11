@@ -8,7 +8,7 @@ if year <= 0
   exit
 end
 
-if (year % 400 == 0 && year % 100 == 0) || (year % 4 == 0 && year % 100 != 0)
+if year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)
   months[1] = 29
   puts 'Високосный год!'
 else
