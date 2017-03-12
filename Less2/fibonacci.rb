@@ -1,15 +1,7 @@
-fibonacci = []
+fibonacci = [0, 1]
 
-x = 0
-y = 1
-
-loop do
-  z = (x + y)
-  x = y
-  y = z
-    until x < 100
-      print fibonacci
-      exit
-    end
+while (x = fibonacci[-2] + fibonacci[-1]) <= 100
   fibonacci << x
 end
+
+puts fibonacci
