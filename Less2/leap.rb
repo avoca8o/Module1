@@ -1,6 +1,5 @@
 months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-
 print 'Year: '
 year = gets.chomp.to_i
 
