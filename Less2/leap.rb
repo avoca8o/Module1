@@ -1,5 +1,6 @@
 months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
+
 print 'Year: '
 year = gets.chomp.to_i
 
@@ -18,25 +19,33 @@ end
 print 'Month: '
 month = gets.chomp.to_i
 
-  unless month.between?(1, 12)
-    puts 'Всего 12 месяцев в году!'
-    exit
-  end
+unless month.between?(1, 12)
+  puts 'Всего 12 месяцев в году!'
+  exit
+end
 
 print 'Day: '
 day = gets.chomp.to_i
 
-  unless day.between?(1, months[month - 1])
-    puts 'Такого дня в этом месяце нет'
-    exit
+unless day.between?(1, months[month - 1])
+  puts 'Такого дня в этом месяце нет'
+  exit
+end
+
+months = months[0..month-1]
+
+result = 0
+i = 0
+
+months.each do |days|
+  i += 1
+
+  if i == month
+    result += day
+  else
+    result += days
   end
 
-i = 0
-result = day
-
-while i < month - 1
-  result += months[i]
-  i += 1
 end
 
 puts "Вы ввели дату: #{day}.#{month}.#{year}"
