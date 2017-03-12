@@ -34,12 +34,10 @@ end
 months = months[0..month-1]
 
 result = 0
-i = 0
 
-months.each do |days|
-  i += 1
+months.each.with_index(1) do |days, index|
 
-  if i == month
+  if month == index
     result += day
   else
     result += days
