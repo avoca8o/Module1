@@ -13,7 +13,7 @@ class Station
   end
 
 # Может показывать список всех поездов на станции, находящиеся в текущий момент
-  def trains
+  def list
     @trains.each do |train|
       puts "Поезд №'#{train.number}' в данный момент находится на станции '#{@name}'"
     end
@@ -51,10 +51,9 @@ class Route
   end
 
   #Может выводить список всех станций по-порядку от начальной до конечной
-  def stations
-    puts "Список станций:"
-    @stations.each.with_index(1) do |station, index|
-      puts "#{index}. #{station.name}"
+  def list
+    @stations.each do |station|
+      puts station.name
     end
   end
 end
@@ -137,7 +136,12 @@ class Train
   end
 
   def current_station
+    if @route
     @route.stations[@index_station]
+    else
+      puts 'Ошибка'
+    end
+
   end
 
   def next

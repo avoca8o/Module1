@@ -20,7 +20,8 @@ station2.arrive(train4)
 station2.arrive(train5)
 station2.arrive(train6)
 
-station1.trains
+station1.list
+
 p station1.list_by_type('Пассажирский').size
 p station2.list_by_type('Пассажирский').size
 p station1.list_by_type('Пассажирский').size
@@ -38,9 +39,14 @@ route4 = Route.new(station2, station1)
 route1.add(station3)
 route1.add(station4)
 route1.add(station5)
-route1.stations
+
+puts 'Список станций: '
+route1.list
+
 route1.delete(station5)
-route1.stations
+
+puts 'Список станций: '
+route1.list
 
 train1.speed_up(100)
 train1.current_speed
@@ -51,11 +57,8 @@ train1.remove_carriage
 train1.remove_carriage
 
 train1.add_route(route1)
-train1.forward
 
-train1.current_station
-train1.forward
-train1.forward
-train1.forward
+
+
 
 
