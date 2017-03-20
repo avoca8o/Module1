@@ -1,5 +1,5 @@
 class Station
-  attr_accessor :name, :trains
+  attr_reader :name, :trains
 
   def initialize(name)
     @name = name
@@ -13,7 +13,7 @@ class Station
   end
 
 # Может показывать список всех поездов на станции, находящиеся в текущий момент
-  def list_of_trains
+  def trains
     @trains.each do |train|
       puts "Поезд №'#{train.number}' в данный момент находится на станции '#{@name}'"
     end
@@ -51,8 +51,8 @@ class Route
   end
 
   #Может выводить список всех станций по-порядку от начальной до конечной
-  def list
-    puts "Список всех станций:"
+  def stations
+    puts "Список станций:"
     @stations.each.with_index(1) do |station, index|
       puts "#{index}. #{station.name}"
     end
@@ -60,7 +60,9 @@ class Route
 end
 
 class Train
-  attr_accessor :quantity_carriage, :train_route, :number, :type
+  #attr_accessor  :route
+  attr_reader :quantity_carriage, :number, :type
+  attr_writer :index_station
 
   def initialize(number, type, quantity_carriage)
     @number = number
@@ -78,13 +80,13 @@ class Train
   # Может возвращать текущую скорость
   def current_speed
     @speed
-    puts "Текущая скорость: #{speed}км/ч"
+    puts "Текущая скорость: #{@speed}км/ч"
   end
 
   # Может тормозить (сбрасывать скорость до нуля)
   def brake
     @speed = 0
-    puts 'Поезд оставился'
+    puts 'Поезд остановился'
   end
 
   # Может прицеплять/отцеплять вагоны (по одному вагону за операцию, метод просто увеличивает или уменьшает количество вагонов).
@@ -100,38 +102,57 @@ class Train
 
 
   def remove_carriage
-    if @speed == 0
+    if @speed == 0 && @quantity_carriage > 0
       @quantity_carriage -= 1
       puts "Отцеплен вагон №#{@quantity_carriage}"
     else
-      puts 'Остановите поезд прежде чем отцеплять вагоны!'
+      puts 'Нельзя отцепить вагон'
     end
   end
 
   # Может принимать маршрут следования (объект класса Route).
   # При назначении маршрута поезду, поезд автоматически помещается на первую станцию в маршруте.
   def add_route(route)
-    self.train_route = route
-    self.index_station = 0
+    @route = route
+    @index_station = 0
   end
 
   # Может перемещаться между станциями, указанными в маршруте.
   # Перемещение возможно вперед и назад, но только на 1 станцию за раз.
   def forward
-
+    if @index_station < @route.stations.size - 1
+    @index_station += 1
+    else
+      puts 'Вы находитесь на последней станции'
+    end
   end
 
   # Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
-  def prev
-
+  def back
+    if @index_station > 0
+    @index_station -= 1
+    else
+      puts 'Вы находитесь на первой станции'
+    end
   end
 
   def current_station
-
+    @route.stations[@index_station]
   end
 
   def next
-
+    if @index_station < @route.stations.size - 1
+    @route.stations[@index_station + 1]
+    else
+      puts 'Отсутствует следующая станция'
+    end
   end
 
+  def prev
+    if @index_station > 0
+    @route.stations[@index_station - 1]
+    else
+      puts 'Отсутствует предыдущая станция'
+    end
+  end
 end
