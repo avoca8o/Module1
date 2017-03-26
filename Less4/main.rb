@@ -1,6 +1,4 @@
 load 'route.rb'
-load 'train.rb'
-load 'station.rb'
 
 
 train1 = Train.new(500, 'Грузовой', 12)
